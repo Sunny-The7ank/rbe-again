@@ -3,6 +3,7 @@ fn main() {
     // There are two slashes at the beginning of the line
     // And nothing written inside these will be read by the compiler
 
+    //println!("Hello, world!");
     println!("Hello, world!");
 
     // Run it. See? Now try deleting the two slashes, and run it again.
