@@ -41,3 +41,26 @@ fn main() {
     // FIXME ^ Comment out this line.
 }
 
+/*
+Notes:
+Printing is handled by a series of macros defined in std::fmt some of which include:
+format! : write formatted text to String
+print! : same as format! but text is printed to the console (io::stdout)
+println! : same as print! but a new line is appended
+eprint! : same as format! but text is printed to standard error (io:stderr)
+eprintln! : same as eprint! but new line is appended
+
+####### Code block from above #######
+
+std::fmt contains many traits which govern the display of text.  The base
+form of two important ones are listed below:
+
+fmt::Debug : uses the {:?} marker. Format text for debugging purposes.
+fmt::Display : uses the {} marker. Format text in more elegant, user friendly fashion
+
+Here, we used fmt::Display because the std library provides implementatiosn for these types.
+To print text for custom types, more steps are required.
+
+Implementing the fmt::Diplsay trait automatically implements the ToString trait which allows
+us to convert the type to String
+*/
