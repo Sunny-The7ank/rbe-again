@@ -28,7 +28,7 @@ fn main() {
 
     // Rust even checks to make sure the correct number of arguments are
     // used.
-    println!("My name is {0}, {1} {0}", "Bond");
+    println!("My name is {0}, {1} {0}", "Bond", "James");
     // FIXME ^ Add the missing argument: "James"
 
     // Create a structure named `Structure` which contains an `i32`.
@@ -37,8 +37,13 @@ fn main() {
 
     // However, custom types such as this structure require more complicated
     // handling. This will not work.
-    println!("This struct `{}` won't print...", Structure(3));
+    //println!("This struct `{}` won't print...", Structure(3));
     // FIXME ^ Comment out this line.
+
+    // Add a println! macro that prints: Pi is roughly 3.142 by controlling th enumber of 
+    // decimal places shown. For this exercise, use let pi = 3.141592 as an estimate for Pi
+    let pi = 3.141592;
+    println!("Pi is roughly {:.*}", 3, pi);
 }
 
 /*
