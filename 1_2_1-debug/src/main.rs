@@ -28,6 +28,15 @@ struct Structure(i32);
 #[derive(Debug)]
 struct Deep(Structure);
 
+// So fmt::Debug makes things printable, but sacrifices some elegance.
+// Rust also provides "pretty printing" with {:#?}
+// Example 2:
+#[derive(Debug)]
+struct Person<'a> {
+    name: &'a str,
+    age: u8
+}
+
 fn main() {
     // Printing with `{:?}` is similar to with `{}`.
     println!("{:?} months in a year.", 12);
@@ -42,4 +51,14 @@ fn main() {
     // The problem with `derive` is there is no control over how
     // the results look. What if I want this to just show a `7`?
     println!("Now {:?} will print!", Deep(Structure(7)));
+
+    // Example 2
+    let name = "Peter";
+    let age = 27;
+    let peter = Person { name, age };
+
+    // Pretty print
+    println!("{:#?}", peter);
 }
+
+//One can manually implement fmt::Display to control the display
