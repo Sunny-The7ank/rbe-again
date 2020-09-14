@@ -36,8 +36,8 @@ No, because no ideal for all types and the std library doesn't dictate one.  fmt
 is not implemented for Vec<T> or for any other generic containers. fmt::Debug must be 
 used for generic cases.
 
-This isn't a problem though because for any new container type which isn't generic, fmt::Display
-can be implemeted.
+This isn't a problem though because for any new container type which isn't generic, 
+fmt::Display can be implemeted.
 
 
 
@@ -73,6 +73,26 @@ impl fmt::Display for Point2D {
     }
 }
 
+#[derive(Debug)]
+struct Complex {
+    real: f64,
+    imag: f64
+}
+
+impl fmt::Display for Complex {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{} + {}i", self.real, self.imag)
+    }
+}
+
+// Activity:
+/*
+After checking the output of the above example, use the Point2D struct as a guide to add a Complex struct to the example. When printed in the same way, the output should be:
+
+    Display: 3.3 + 7.2i
+    Debug: Complex { real: 3.3, imag: 7.2 }
+*/
+
 fn main() {
     let minmax = MinMax(0, 14);
 
@@ -93,7 +113,22 @@ fn main() {
     println!("Display: {}", point);
     println!("Debug: {:?}", point);
 
+    let activity = Complex {real: 3.3, imag: 7.2};
+
+    println!("Compare complex numbers:");
+    println!("Display: {}", activity);
+    println!("Debug: {:?}", activity);
+
     // Error. Both `Debug` and `Display` were implemented, but `{:b}`
     // requires `fmt::Binary` to be implemented. This will not work.
     // println!("What does Point2D look like in binary: {:b}?", point);
+
 }
+
+/*
+So, fmt::Display has been implemented but fmt::Binary has not, and therefore cannot be used. 
+std::fmt has many traits and each requires its own implementation. This is detailed further 
+in std::fmt
+####### ACTIVITY #######
+
+*/
