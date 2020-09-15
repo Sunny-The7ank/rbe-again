@@ -10,7 +10,7 @@ Add fmt::Display trait to matrix struct so it prints:
 ( 1.1 1.2 )
 ( 2.1 2.2 )
 */
-
+use std::fmt;
 // Tuples can be used as function arguments and as return values
 fn reverse(pair: (i32, bool)) -> (bool, i32) {
     // `let` can be used to bind the members of a tuple to variables
@@ -22,6 +22,12 @@ fn reverse(pair: (i32, bool)) -> (bool, i32) {
 // The following struct is for the activity.
 #[derive(Debug)]
 struct Matrix(f32, f32, f32, f32);
+
+impl fmt::Display for Matrix {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "( {} {} )\n( {} {} )", self.0, self.1, self.2, self.3)
+    }
+}
 
 fn main() {
     // A tuple with a bunch of different types
@@ -62,6 +68,6 @@ fn main() {
     println!("{:?}, {:?}, {:?}, {:?}", a, b, c, d);
 
     let matrix = Matrix(1.1, 1.2, 2.1, 2.2);
-    println!("{:?}", matrix);
+    println!("{}", matrix);
 
 }
