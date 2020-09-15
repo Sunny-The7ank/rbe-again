@@ -1,3 +1,15 @@
+/*
+####### NOTES #######
+An array is a collection of object of the same type T, stored in contiguous memory.  Arrays
+are created using square brackets [], and their size, which is known at compile time, is part
+of their type signature [T; size]
+
+Slices are similar to arrays, but their size isn't known at compile time. Instead, a slice
+is a two-word object, the first word is a pointer to the data, and the second word is the length
+of a slice. The word size is the same as usize, determined by the processor architecture eg 64 
+bits on an x86-64. Slices can be used to borrow a section of an array, and have the signature
+&[T]
+*/
 use std::mem;
 
 // This function borrows a slice
