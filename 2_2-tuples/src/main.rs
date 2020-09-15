@@ -1,3 +1,16 @@
+/*
+####### NOTES #######
+A tuple is a collection of different types. Tuples are constructed using parens (), and
+each tuple itself is a value with type signature (T1, T2, ... Tn), where T1, and T2 are
+the types of its members. Functions can use tuples to return multiple values, as tuples
+can hold any number of values
+
+####### Activity #######
+Add fmt::Display trait to matrix struct so it prints:
+( 1.1 1.2 )
+( 2.1 2.2 )
+*/
+
 // Tuples can be used as function arguments and as return values
 fn reverse(pair: (i32, bool)) -> (bool, i32) {
     // `let` can be used to bind the members of a tuple to variables
