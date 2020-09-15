@@ -1,3 +1,18 @@
+/*
+####### NOTES #######
+We've seen that formatting is specified via a format string: 
+    format!("{}", foo) -> "3735928559"
+    format!("0x{:X}", foo) -> "0xDEADBEEF"
+    format!("0o{:o}", foo) -> "0o33653337357"
+
+The same variable (foo) can be formatted differently depending on argument type 
+used: X vs o vs unspecified
+
+This formatting functionality is implemented via traits, and there is one trait
+for each argument type. The most common formatting trait is Display, which handles
+cases where arg type is left unspecified {} for instance
+*/
+
 use std::fmt::{self, Formatter, Display};
 
 struct City {
