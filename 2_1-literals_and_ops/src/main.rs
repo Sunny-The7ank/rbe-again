@@ -1,3 +1,23 @@
+/*
+Integers, floats, chars, strings, booleans, and the unit type () can be expressed
+using literals. 
+
+Integers can also be expressed in hex, octal, or binary using these prefixes:
+0x (hex), 0o (octal), and 0b (binary)
+
+Underscores can be inserted into numeric literals to improve readability, both in
+front and behind the decimal. 
+EX:
+1_000 is the same as 1000 (1,000), and
+0.000_001 is the same as 0.000001
+
+We need to tell the compiler the type of literals we use. For now, we'll use the u32
+suffix to indicate that the literal is an unsigned 32-bit int, and the i32 indicates a 
+signed 32-bit int
+
+
+*/
+
 fn main() {
     // Integer addition
     println!("1 + 2 = {}", 1u32 + 2);
