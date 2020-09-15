@@ -21,6 +21,7 @@ struct Unit;
 struct Pair(i32, f32);
 
 // A struct with two fields
+#[derive(Debug)]
 struct Point {
     x: f32,
     y: f32,
@@ -28,11 +29,29 @@ struct Point {
 
 // Structs can be reused as fields of another struct
 #[allow(dead_code)]
+#[derive(Debug)]
 struct Rectangle {
     // A rectangle can be specified by where the top left and bottom right
     // corners are in space.
-    top_left: Point,
-    bottom_right: Point,
+    p1: Point,
+    p2: Point,
+}
+
+fn rect_area(rect: &Rectangle) -> f32 {
+    let &Rectangle { 
+        p1: Point { x: x1, y: y1 }, 
+        p2: Point { x: x2, y: y2 }
+    } = rect;
+
+    return (x2 - x1).abs() * (y2 - y1).abs();
+}
+
+fn square(origin: Point, dimension: f32) -> Rectangle {
+    let Point {
+        x, y
+    } = origin;
+
+    Rectangle{ p1: origin, p2: Point { x: x + dimension, y: y + dimension}}
 }
 
 fn main() {
@@ -62,11 +81,13 @@ fn main() {
     // Destructure the point using a `let` binding
     let Point { x: top_edge, y: left_edge } = point;
 
-    let _rectangle = Rectangle {
+    let rectangle = Rectangle {
         // struct instantiation is an expression too
-        top_left: Point { x: left_edge, y: top_edge },
-        bottom_right: bottom_right,
+        p1: Point { x: left_edge, y: top_edge },
+        p2: bottom_right,
     };
+    let area = rect_area(&rectangle);
+    println!("Area of rectangle: {:?} is {}", rectangle, area);
 
     // Instantiate a unit struct
     let _unit = Unit;
@@ -81,4 +102,8 @@ fn main() {
     let Pair(integer, decimal) = pair;
 
     println!("pair contains {:?} and {:?}", integer, decimal);
+
+    let new_square = square(Point {x: 0.5, y: 0.5}, 1.3);
+
+    println!("Square: {:?}", new_square);
 }
