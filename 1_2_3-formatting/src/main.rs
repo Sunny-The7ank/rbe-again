@@ -43,6 +43,18 @@ struct Color {
     blue: u8,
 }
 
+impl Display for Color {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(f, "{}, {}, {}",self.red, self.green, self.blue)
+    }
+}
+
+impl fmt::UpperHex for Color {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(f, "{:02X}{:02X}{:02X}", self.red, self.green, self.blue)
+    }
+}
+
 fn main() {
     for city in [
         City { name: "Dublin", lat: 53.347778, lon: -6.259722 },
@@ -58,6 +70,6 @@ fn main() {
     ].iter() {
         // Switch this to use {} once you've added an implementation
         // for fmt::Display.
-        println!("{:?}", *color);
+        println!("RGB ({}) 0x{:X}", *color, *color);
     }
 }
