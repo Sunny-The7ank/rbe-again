@@ -1,0 +1,4 @@
+Rust custom daya typeas are formed mainly through 2 keywords:
+    struct: defines a structure
+    enum: defines an enumeration
+Constants can also be created via the const and static keywords
