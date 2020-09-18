@@ -106,4 +106,5 @@ fn main() {
     let new_square = square(Point {x: 0.5, y: 0.5}, 1.3);
 
     println!("Square: {:?}", new_square);
+    
 }
